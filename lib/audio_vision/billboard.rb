@@ -2,13 +2,18 @@ module AudioVision
   class Billboard < Base
 
     class << self
-      def api_path
-        @api_path ||= "billboards"
+      def api_namespace
+        :billboards
       end
 
 
+      # Get the current Billboard on AudioVision.
+      # Returns a Billboard if success, otherwise nil.
+      #
+      # Example:
+      #    AudioVision::Billboard.current #=> #<AudioVision::Billboard>
       def current
-        response = client.get(api_path + "/current")
+        response = client.get(endpoint("current"))
 
         if response.success?
           new(response.body)

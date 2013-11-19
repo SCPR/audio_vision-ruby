@@ -1,29 +1,52 @@
-# Audiovision
+# AudioVision
 
-TODO: Write a gem description
+This is a simple Ruby client for the AudioVision API.
+Documentation for the AudioVision API can be found
+[**here**](https://github.com/SCPR/api-docs/tree/master/AudioVision/v1).
+
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'audiovision-ruby'
+    gem 'audio_vision'
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install audio_vision
 
 ## Usage
 
-TODO: Write usage instructions here
+### Posts
+```ruby
+# Find by ID
+AudioVision::Post.find(109)
+
+# Find by URL
+AudioVision::Post.find_by_url("http://audiovision.scpr.org/319/public-square-thankful-for")
+
+# Find Collection - all parameters are passed directly to API
+AudioVision::Post.collection(limit: 10, query: "Los Angeles", category: "video")
+```
+
+### Billboards
+```ruby
+# Find by ID
+AudioVision::Billboard.find(4)
+
+# Get the current Billboard
+AudioVision::Billboard.current
+
+# Get all Billboards
+AudioVision::Billboard.collection
+```
+
+### Buckets
+```ruby
+# Find by UUID (key)
+AudioVision::Billboard.find("featured-posts")
+
+# Get all Buckets
+AudioVision::Bucket.collection
+```
+
 
 ## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Fork it, fix it, send a PR. `bundle exec rspec` to run tests.

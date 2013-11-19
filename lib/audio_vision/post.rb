@@ -2,13 +2,22 @@ module AudioVision
   class Post < Base
 
     class << self
-      def api_path
-        @api_path ||= "posts"
+      def api_namespace
+        :posts
       end
 
 
+      # Find a Post by its URL.
+      # Returns a Post if success, otherwise nil.
+      #
+      # Example:
+      #    AudioVision::Post.find_by_url(
+      #     "http://audiovision.scpr.org/321/the-night-watch"
+      #    )
+      #
+      #    #=> #<AudioVision::Post>
       def find_by_url(url)
-        response = client.get(api_path + "/by_url", url: url)
+        response = client.get(endpoint("by_url"), :url => url)
 
         if response.success?
           new(response.body)
@@ -40,15 +49,22 @@ module AudioVision
       @body         = attributes["body"]
       @thumbnail    = attributes["thumbnail"]
       @byline       = attributes["byline"]
-      @attributions = attributes["attributions"]
       @public_url   = attributes["public_url"]
+
+      if attributes["category"]
+        @category = Category.new(attributes["category"])
+      end
 
       if attributes["published_at"]
         @published_at = Time.parse(attributes["published_at"].to_s)
       end
 
-      @assets = []
+      @attributions = []
+      Array(attributes["attributions"]).each do |json|
+        @attributions << Attribution.new(json)
+      end
 
+      @assets = []
       Array(attributes["assets"]).each do |json|
         @assets << Asset.new(json)
       end

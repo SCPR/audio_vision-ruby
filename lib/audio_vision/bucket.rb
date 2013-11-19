@@ -2,20 +2,11 @@ module AudioVision
   class Bucket < Base
 
     class << self
-      def api_path
-        @api_path ||= "buckets"
+      def api_namespace
+        :buckets
       end
 
-
-      def find_by_key(key)
-        response = client.get(api_path + "/#{key}")
-
-        if response.success?
-          new(response.body)
-        else
-          nil
-        end
-      end
+      alias :find_by_key :find
     end
 
 

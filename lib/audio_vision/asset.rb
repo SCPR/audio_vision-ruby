@@ -4,10 +4,10 @@ module AudioVision
     class Size
       attr_accessor :width, :height, :url
 
-      def initialize(json={})
-        @width    = json['width']
-        @height   = json['height']
-        @url      = json['url']
+      def initialize(attributes={})
+        @width    = attributes['width']
+        @height   = attributes['height']
+        @url      = attributes['url']
       end
     end
 
@@ -27,13 +27,13 @@ module AudioVision
 
     attr_accessor *(ATTRIBUTES + SIZES)
 
-    def initialize(json={})
-      @caption  = json["caption"]
-      @owner    = json["owner"]
-      @title    = json["title"]
+    def initialize(attributes={})
+      @caption  = attributes["caption"]
+      @owner    = attributes["owner"]
+      @title    = attributes["title"]
 
       SIZES.each do |size|
-        self.send("#{size}=", Asset::Size.new(json[size.to_s]))
+        self.send("#{size}=", Asset::Size.new(attributes[size.to_s]))
       end
     end
   end

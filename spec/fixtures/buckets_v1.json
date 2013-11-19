@@ -1,0 +1,26 @@
+[
+  {
+    "id": "instagram",
+    "title": "Instagram Winners",
+    "description": "Each month, Instagram Lovers Anonymous and KPCC pick a theme and ask you to submit your photos on that theme. Then, we interview the winner. Find our past contest winners here.",
+    "updated_at": "2013-06-17T14:06:32.000-07:00"
+  },
+  {
+    "id": "featured-posts",
+    "title": "Featured Posts",
+    "description": "Featured posts from AudioVision.",
+    "updated_at": "2013-06-18T13:31:12.000-07:00"
+  },
+  {
+    "id": "mobile-feature",
+    "title": "Featured on Mobile",
+    "description": "This is where posts that deserve to be \"embiggened\" on the iPad app and other places should go. Pick videos, photos, etc with high quality assets, please.",
+    "updated_at": "2013-11-06T18:06:49.000-08:00"
+  },
+  {
+    "id": "public-square-community-project",
+    "title": "Our Public Square Community Project with NPR",
+    "description": "Each month, we team up with NPR and ask you to tell stories about your life through Instagram. You can see your stories here.",
+    "updated_at": "2013-09-30T20:31:50.000-07:00"
+  }
+]

@@ -1,6 +1,13 @@
+require 'faraday'
+require 'faraday_middleware'
+
 module AudioVision
   class Client
-
+    # Get a response from the AudioVision API.
+    # Returns a Faraday Response object.
+    #
+    # Example:
+    #   client.get("posts/1")
     def get(path, params={})
       connection.get do |request|
         request.url path
@@ -13,7 +20,7 @@ module AudioVision
 
     def connection
       @connection ||= begin
-        Faraday.new(url: api_root) do |conn|
+        Faraday.new(:url => api_root) do |conn|
           conn.response :json
           conn.adapter Faraday.default_adapter
         end
@@ -21,7 +28,7 @@ module AudioVision
     end
 
     def api_root
-      @api_root ||= Rails.application.config.audio_vision.host + API_PATH
+      @api_root ||= AudioVision::URL + AudioVision.api_root
     end
   end
 end
