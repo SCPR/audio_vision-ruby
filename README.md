@@ -1,5 +1,7 @@
 # AudioVision
 
+[![Build Status](https://circleci.com/gh/SCPR/audio_vision-ruby.png?circle-token=15b157b848c82b2bab8abef94055acf1d001f59b)](https://circleci.com/gh/SCPR/audio_vision-ruby)
+
 This is a simple Ruby client for the AudioVision API.
 Documentation for the AudioVision API can be found
 [**here**](https://github.com/SCPR/api-docs/tree/master/AudioVision/v1).
